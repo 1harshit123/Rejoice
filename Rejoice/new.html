@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Example</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+        }
+        .d {
+            height: 100vh; /* Ensure full viewport height */
+            width: 100%;
+            background-color: black;
+        }
+
+        .scroll {
+            height: 27vh;
+            width: 27vh;
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 150vh; /* Ensure the element starts off-screen */
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <!-- This div takes up the first screen view -->
+    </div>
+
+    <div class="scroll">
+        .c
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-8t4D3DlaMHhXHZ5JgB5x/R+XrpQXV3gphBYqHSnHiN0nBUmSKX/rBvZ5hGvHavsrSNTh3RtZkOhRPNUwQ1oPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+
+        gsap.to(".scroll", {
+            x: 400,
+            rotation: 300,
+            duration: 3,
+            scrollTrigger: {
+                trigger: ".scroll", // Trigger when ".scroll" enters the viewport
+                start: "top 80%",   // When the top of the .scroll element is 80% from the top of the viewport
+                end: "top 20%",     // Ends when it's 20% from the top
+                scrub: true,        // Smooth scrolling animation
+                markers: true       // Optional: shows markers to help debug the trigger
+            }
+        });
+    </script>
+</body>
+</html>
